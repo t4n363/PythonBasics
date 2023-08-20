@@ -18,3 +18,9 @@ example: [{'a': 5, 'b': 7, 'g': 11}, {'a': 3, 'c': 35, 'g': 42}]
 If dicts have same key, we will take max value, and rename key with dict number with max value
 If key is only in one dict - take it as is,
 Example: {'a_1': 5, 'b': 7, 'c': 35, 'g_2': 42}
+
+3_ Strings.py
+Solition of second homework. 
+1. Normilize cases for a given text. 
+2. Count spaces.
+3. Create sentensce from the last word of the existing sentences. Add it to the end of second paragraph.  
