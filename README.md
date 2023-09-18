@@ -19,8 +19,20 @@ If dicts have same key, we will take max value, and rename key with dict number 
 If key is only in one dict - take it as is,
 Example: {'a_1': 5, 'b': 7, 'c': 35, 'g_2': 42}
 
-3_ Strings.py
+3_Strings.py
 Solition of second homework. 
 1. Normilize cases for a given text. 
 2. Count spaces.
 3. Create sentensce from the last word of the existing sentences. Add it to the end of second paragraph.  
+
+4_FunctionsFor2.py
+Module contains homework2 decompositioned into functions.
+
+4_FunctionsFor3.py
+Module contains homework3 decompositioned into functions.
+
+5_OOP.py
+File contains simple console tool to read from file and write into file feed from user input. 
+
+6_Module.py 
+Homework 5 extended with publication from file. 
