@@ -36,3 +36,8 @@ File contains simple console tool to read from file and write into file feed fro
 
 6_Module.py 
 Homework 5 extended with publication from file. 
+
+7_CSV.py
+Homework 6 extended with methods to create 2 files with statistics for feed.
+First file letter_statistics.csv contains cout of letter in the file, count uppercase, percentage this of letter in a text. 
+Second file contains each word and amount of the word in a file. As word concidered set of symbols between 2 spaces. 
