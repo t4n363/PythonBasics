@@ -41,3 +41,9 @@ Homework 5 extended with publication from file.
 Homework 6 extended with methods to create 2 files with statistics for feed.
 First file letter_statistics.csv contains cout of letter in the file, count uppercase, percentage this of letter in a text. 
 Second file contains each word and amount of the word in a file. As word concidered set of symbols between 2 spaces. 
+
+final_task_calculate_distance.py
+Tool which calculate straight-line distance between different cities based on coordinates:
+ 1. User will provide two city names by console interface
+ 2. If city coordinates not in DB, it will ask user for input and store it in SQLite database for future use
+ 3. Return distance between cities in kilometers

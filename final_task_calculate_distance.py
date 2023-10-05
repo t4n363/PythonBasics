@@ -6,6 +6,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
     R = 6371  # Radius of the Earth in kilometers
 
     d_lat = radians(lat2 - lat1)
+    
     d_lon = radians(lon2 - lon1)
 
     a = sin(d_lat / 2)**2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(d_lon / 2)**2
