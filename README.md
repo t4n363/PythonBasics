@@ -42,6 +42,12 @@ Homework 6 extended with methods to create 2 files with statistics for feed.
 First file letter_statistics.csv contains cout of letter in the file, count uppercase, percentage this of letter in a text. 
 Second file contains each word and amount of the word in a file. As word concidered set of symbols between 2 spaces. 
 
+folder homework_8_9_10 
+Contains reworked solution for news feed publication.
+Allowes to add new recordes into flat file and DB from manual input, flat file, JSON or XML file.
+Allows to read feed from file or DB.
+Normilize text cases on publication, check for duplicated publication text, create csv file with newsfeed statistics. 
+
 final_task_calculate_distance.py
 Tool which calculate straight-line distance between different cities based on coordinates:
  1. User will provide two city names by console interface

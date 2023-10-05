@@ -1,0 +1,20 @@
+[
+    {
+        "type": "News",
+        "text": "This is a news article.",
+        "city": "New York",
+        "expiration": "2023-12-31"
+    },
+    {
+        "type": "Advertisement",
+        "text": "Buy one, get one free!",
+        "city": "",
+        "expiration": "2023-11-30"
+    },
+    {
+        "type": "Joke",
+        "text": "Why did the chicken cross the road? To get to the other side!",
+        "city": "None",
+        "expiration": "2023-10-15"
+    }
+]
