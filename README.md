@@ -44,9 +44,22 @@ Second file contains each word and amount of the word in a file. As word concide
 
 folder homework_8_9_10 
 Contains reworked solution for news feed publication.
-Allowes to add new recordes into flat file and DB from manual input, flat file, JSON or XML file.
-Allows to read feed from file or DB.
-Normilize text cases on publication, check for duplicated publication text, create csv file with newsfeed statistics. 
+
+main.py - starting point of the tool and source of main functions for publication.
+publication.py - set of functions to manage and format publications. 
+news_feed.txt - file with publications.
+ 
+create_news_feed_db.py - create DB file with a tables. 
+db_feed.db
+
+create_test_file.py - create test XML and JSON
+input_news_feed.json
+input_news_feed.xml
+
+CSV files for statistics:
+letter_statistics.csv
+letter_statistics.csv
+
 
 final_task_calculate_distance.py
 Tool which calculate straight-line distance between different cities based on coordinates:
