@@ -1,7 +1,11 @@
 import os
+import datetime
+import json
 from publication import Publication
 import sqlite3
 import xml.etree.ElementTree as ET
+import re
+import csv
 
 def publish_record():
     print("Select the type of publication:")
@@ -28,6 +32,8 @@ def publish_record():
     # Write to file
     with open("news_feed.txt", "a") as file:
         file.write(publication.format_for_file())
+        generate_word_statistics()
+        generate_letter_statistics()   
 
     # Insert into database
     conn = sqlite3.connect('db_feed.db')
@@ -37,6 +43,48 @@ def publish_record():
     conn.close()
 
     print("Publication added successfully.")
+
+
+def generate_word_statistics():
+    with open('news_feed.txt', 'r') as file:
+        text = file.read().lower()
+        words = re.findall(r'\b[a-z]+\b', text)
+
+        word_counts = {}
+        for word in words:
+            if word.isalpha():
+                word_counts[word] = word_counts.get(word, 0) + 1
+
+        with open('word_statistics.csv', 'w', newline='') as csvfile:
+            fieldnames = ['word', 'count']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for word, count in word_counts.items():
+                writer.writerow({'word': word, 'count': count})
+
+def generate_letter_statistics():
+    with open('news_feed.txt', 'r') as file:
+        text = file.read()
+        letter_counts = {}
+
+        for char in text:
+            if char.isalpha():
+                letter_counts[char.lower()] = letter_counts.get(char.lower(), 0) + 1
+
+        total_letters = sum(letter_counts.values())
+        uppercase_letters = sum(count for letter, count in letter_counts.items() if letter.isupper())
+
+        with open('letter_statistics.csv', 'w', newline='') as csvfile:
+            fieldnames = ['letter', 'count_all', 'count_uppercase', 'percentage']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for letter, count in letter_counts.items():
+                percentage = (count / total_letters) * 100
+                writer.writerow({'letter': letter, 'count_all': total_letters, 
+                                 'count_uppercase': uppercase_letters, 'percentage': percentage})
+
 
 def read_feed():
     print("Select the source to read from:")
@@ -62,6 +110,21 @@ def read_feed():
             print(publication)
     else:
         print("Invalid choice. Feed not read.")
+
+def insert_into_db(type, text, city, expiration):
+    try:
+        conn = sqlite3.connect('db_feed.db')
+        cursor = conn.cursor()
+
+        cursor.execute("INSERT INTO t_news_feed (publication_type, publication_text, publication_city, publication_date, publication_expiration) VALUES (?, ?, ?, ?, ?)",
+                       (type, text, city, datetime.datetime.now().strftime('%d/%m/%Y %H:%M'), expiration))
+
+        conn.commit()
+    except Exception as e:
+        print(f"An error occurred while inserting into the database: {e}")
+    finally:
+        conn.close()
+
 
 def add_publications_from_file():
     print("Select the file type to add publications from:")
@@ -111,6 +174,8 @@ def add_publications_from_flat_file(file_name):
                 # Write to file
                 with open("news_feed.txt", "a") as output_file:
                     output_file.write(publication.format_for_file())
+                    generate_word_statistics()
+                    generate_letter_statistics()   
 
                 # Insert into database
                 conn = sqlite3.connect('db_feed.db')
@@ -125,8 +190,7 @@ def add_publications_from_flat_file(file_name):
     except FileNotFoundError:
         print(f"The file '{file_name}' does not exist.")
 
-def add_publications_from_json():
-    file_name = input("Enter the JSON file name or path (leave blank for default): ")
+def add_publications_from_json(file_name):
 
     if not file_name:
         file_name = "input_news_feed.json"
@@ -135,15 +199,21 @@ def add_publications_from_json():
         with open(file_name, 'r') as file:
             data = json.load(file)
 
-            for item in data:
-                publish_record(item['type'], item['text'], item['city'], item['expiration'])
+            with open("news_feed.txt", "a") as feed_file:
+                for item in data:
+                    feed_file.write(f"\n{item['type']} -------------------------\n")
+                    feed_file.write(f"{item['text']}\n")
+                    feed_file.write(f"{item['city']}, {datetime.datetime.now().strftime('%d/%m/%Y %H:%M')}\n")
+                    feed_file.write("-------------------------\n")
+
+                    generate_word_statistics()
+                    generate_letter_statistics()
+
+                    insert_into_db(item['type'], item['text'], item['city'], item['expiration'])
     except FileNotFoundError:
         print(f"The file '{file_name}' does not exist.")
 
-
-def add_publications_from_xml():
-    file_name = input("Enter the XML file name or path (leave blank for default): ")
-
+def add_publications_from_xml(file_name):
     if not file_name:
         file_name = "input_news_feed.xml"
 
@@ -151,13 +221,22 @@ def add_publications_from_xml():
         tree = ET.parse(file_name)
         root = tree.getroot()
 
-        for publication in root:
-            type = publication.find('type').text
-            text = publication.find('text').text
-            city = publication.find('city').text
-            expiration = publication.find('expiration').text
+        with open("news_feed.txt", "a") as feed_file:
+            for publication in root:
+                type = publication.find('type').text
+                text = publication.find('text').text
+                city = publication.find('city').text
+                expiration = publication.find('expiration').text
 
-            publish_record(type, text, city, expiration)
+                feed_file.write(f"\n{type} -------------------------\n")
+                feed_file.write(f"{text}\n")
+                feed_file.write(f"{city}, {datetime.datetime.now().strftime('%d/%m/%Y %H:%M')}\n")
+                feed_file.write("-------------------------\n")
+
+                generate_word_statistics()
+                generate_letter_statistics()
+
+                insert_into_db(type, text, city, expiration)
     except FileNotFoundError:
         print(f"The file '{file_name}' does not exist.")
 
@@ -170,3 +249,16 @@ if __name__ == "__main__":
         print("2. Read feed")
         print("3. Add publications from file")
         print("4. Exit")
+
+        choice = input("Enter your choice (1/2/3/4): ")
+
+        if choice == "1":
+            publish_record()
+        elif choice == "2":
+            read_feed()
+        elif choice == "3":
+            add_publications_from_file()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please try again.")

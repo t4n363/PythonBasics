@@ -1,0 +1,111 @@
+News -------------------------
+The first publicated news record.
+Prague, 06/10/2023 00:00
+-------------------------News -------------------------
+The most first news publication.
+Prague., 06/10/2023 00:02
+-------------------------Private Ad  -------------------------
+Your advertisment. 
+Actual until: 12/12/2025
+Published on: 06/10/2023 00:02
+Days valid: 797-------------------------News -------------------------
+This is a news article.
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:15
+-------------------------
+Advertisement -------------------------
+Buy one, get one free!
+None, 06/10/2023 00:15
+-------------------------
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:15
+-------------------------
+
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:16
+-------------------------
+
+Advertisement -------------------------
+Buy one, get one free!
+, 06/10/2023 00:16
+-------------------------
+
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:16
+-------------------------
+
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:19
+-------------------------
+
+Advertisement -------------------------
+Buy one, get one free!
+, 06/10/2023 00:19
+-------------------------
+
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:19
+-------------------------
+
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:25
+-------------------------
+
+Advertisement -------------------------
+Buy one, get one free!
+None, 06/10/2023 00:25
+-------------------------
+
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:25
+-------------------------
+Joke of the day -------------------------
+Joke of theday
+Actual until: 07/10/2023
+default, 06/10/2023 00:25
+-------------------------News -------------------------
+More news.
+Prague, 06/10/2023 00:27
+-------------------------
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:29
+-------------------------
+
+Advertisement -------------------------
+Buy one, get one free!
+None, 06/10/2023 00:29
+-------------------------
+
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:29
+-------------------------
+
+News -------------------------
+This is a news article.
+New York, 06/10/2023 00:29
+-------------------------
+
+Advertisement -------------------------
+Buy one, get one free!
+, 06/10/2023 00:29
+-------------------------
+
+Joke -------------------------
+Why did the chicken cross the road? To get to the other side!
+None, 06/10/2023 00:29
+-------------------------
+Joke of the day -------------------------
+Joke about statistic in csvfile.
+Actual until: 07/10/2023
+Any., 06/10/2023 00:35
+-------------------------

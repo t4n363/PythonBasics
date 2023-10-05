@@ -53,3 +53,4 @@ Tool which calculate straight-line distance between different cities based on co
  1. User will provide two city names by console interface
  2. If city coordinates not in DB, it will ask user for input and store it in SQLite database for future use
  3. Return distance between cities in kilometers
+
